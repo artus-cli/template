@@ -8,9 +8,13 @@
   "bin": "dist/cli.js",
   "types": "dist/index.d.ts",
   "type": "commonjs",
-  "files": [
-    "dist"
-  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "lint": "eslint . --ext .ts",
     "postlint": "tsc --noEmit",
@@ -41,6 +45,12 @@
   "repository": {
     "type": "git",
     "url": ""
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "artus",
