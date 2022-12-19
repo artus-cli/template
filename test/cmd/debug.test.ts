@@ -6,7 +6,7 @@ describe('test/debug.test.ts', () => {
       // .debug()
       .expect('stdout', /inspect true/)
       .expect('stdout', /port 80/)
-      .expect('stdout', /flags 1/)
+      .expect('stdout', /flags 1 number/)
       .end();
   });
 
@@ -14,7 +14,7 @@ describe('test/debug.test.ts', () => {
     await run('inspect')
       // .debug()
       .expect('stdout', /inspect true/)
-      .expect('stdout', /flags 0/)
+      .expect('stdout', /flags 0 number/)
       .end();
   });
 });

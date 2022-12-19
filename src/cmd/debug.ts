@@ -2,7 +2,7 @@ import { DefineCommand, DefineOption } from '@artus-cli/artus-cli';
 import { DevCommand, DevOption } from './dev';
 
 interface DebugOption extends DevOption {
-  flags?: string;
+  flags?: number;
 }
 
 @DefineCommand({
@@ -28,7 +28,7 @@ export class DebugCommand extends DevCommand {
   async run() {
     console.info('port', this.args.port);
     console.info('inspect', this.args.inspect);
-    console.info('flags', this.args.flags);
+    console.info('flags', this.args.flags, typeof this.args.flags);
     console.info('baseDir', this.args.baseDir);
     return {
       command: 'debug',
