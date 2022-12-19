@@ -2,7 +2,7 @@ import { DefineCommand, DefineOption, Command, Option } from '@artus-cli/artus-c
 
 export interface DevOption extends Option {
   port?: number;
-  inspect?: string;
+  inspect?: boolean;
   nodeFlags?: string;
   baseDir?: string;
 }
@@ -34,7 +34,7 @@ export class DevCommand extends Command {
 
   async run() {
     console.info('port', this.args.port);
-    console.info('inspect', this.args.inspect);
+    console.info('inspect', this.args.inspect, typeof this.args.inspect);
     console.info('nodeFlags', this.args.nodeFlags);
     console.info('baseDir', this.args.baseDir);
     return {
