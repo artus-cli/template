@@ -5,7 +5,7 @@ describe('test/dev.test.ts', () => {
     await run('dev --port=80 --nodeFlags=--experimental-vm-modules')
       // .debug()
       .expect('stdout', /port 80/)
-      .expect('stdout', /inspect false/)
+      .expect('stdout', /inspect false boolean/)
       .expect('stdout', /nodeFlags --experimental-vm-module/)
       .end();
   });
