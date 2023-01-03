@@ -1,9 +1,5 @@
-import { DefineCommand, DefineOption } from '@artus-cli/artus-cli';
-import { DevCommand, DevOption } from './dev';
-
-interface DebugOption extends DevOption {
-  flags?: number;
-}
+import { DefineCommand, Option } from '@artus-cli/artus-cli';
+import { DevCommand } from './dev';
 
 @DefineCommand({
   command: 'debug [baseDir]',
@@ -11,28 +7,25 @@ interface DebugOption extends DevOption {
   description: 'Run the development server at debug mode',
 })
 export class DebugCommand extends DevCommand {
-  @DefineOption<DebugOption>({
-    inspect: {
-      type: 'boolean',
-      default: true,
-      description: 'Debug with node-inspector',
-    },
-    flags: {
-      type: 'number',
-      alias: 'f',
-      default: 0,
-    },
+  @Option({
+    default: true,
+    description: 'Debug with node-inspector',
   })
-  args: DebugOption;
+  inspect: boolean;
+
+  @Option({
+    alias: 'f',
+    default: 0,
+  })
+  flags: number;
 
   async run() {
-    console.info('port', this.args.port);
-    console.info('inspect', this.args.inspect);
-    console.info('flags', this.args.flags, typeof this.args.flags);
-    console.info('baseDir', this.args.baseDir);
+    console.info('port', this.port);
+    console.info('inspect', this.inspect);
+    console.info('flags', this.flags, typeof this.flags);
+    console.info('baseDir', this.baseDir);
     return {
       command: 'debug',
-      args: this.args,
     };
   }
 }
